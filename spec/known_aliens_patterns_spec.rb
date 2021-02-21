@@ -4,7 +4,7 @@ require 'spec_helper'
 require 'known_aliens_patterns'
 
 RSpec.describe KnownAliensPatterns do
-  subject(:service) { described_class.new(aliens) }
+  subject(:service) { described_class.instance.call(aliens) }
 
   context 'with aliens' do
     context 'with one alien' do
@@ -12,7 +12,7 @@ RSpec.describe KnownAliensPatterns do
       let(:expected_result) { Crab.instance.looks.split }
 
       it do
-        expect(service.call).to eq(expected_result)
+        expect(service).to eq(expected_result)
       end
     end
 
@@ -21,7 +21,7 @@ RSpec.describe KnownAliensPatterns do
       let(:expected_result) { Crab.instance.looks.split + Squid.instance.looks.split }
 
       it do
-        expect(service.call).to eq(expected_result)
+        expect(service).to eq(expected_result)
       end
     end
   end
