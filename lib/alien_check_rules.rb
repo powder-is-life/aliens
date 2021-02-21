@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'singleton'
 
 class AlienCheckRules
@@ -11,17 +13,15 @@ class AlienCheckRules
     }
   end
 
-
   def offset_per_pattern(alien, width_of_the_input)
     result = {}
-    order_of_patterns(alien).each_with_index do |pattern, index| 
+    order_of_patterns(alien).each_with_index do |pattern, index|
       result[pattern] = index * width_of_the_input
     end
     result
   end
-  
+
   def order_of_patterns(alien)
     @order_of_patterns ||= alien.ordered_detectable_pattern
-  end 
-
+  end
 end

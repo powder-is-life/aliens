@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 require 'aho_corasick_matcher'
 require 'known_aliens_patterns'
 require 'singleton'
 
-class AlienMatcher 
+class AlienMatcher
   include Singleton
 
   def call

@@ -1,13 +1,14 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 require 'crab'
 
 RSpec.describe Crab do
   subject(:crab) { described_class.instance }
 
-
-  describe '#looks' do 
+  describe '#looks' do
     it do
-      expect { crab.looks } .not_to raise_error
+      expect { crab.looks }.not_to raise_error
     end
 
     it do

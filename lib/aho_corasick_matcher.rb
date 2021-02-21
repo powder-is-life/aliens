@@ -1,5 +1,6 @@
-require 'thread'
-# Taken from https://github.com/altmetric/aho_corasick_matcher ( MIT License) 
+# frozen_string_literal: true
+
+# Taken from https://github.com/altmetric/aho_corasick_matcher ( MIT License)
 # Modified by me to include the locations of the matchings
 class AhoCorasickMatcher
   attr_reader :root
@@ -12,16 +13,17 @@ class AhoCorasickMatcher
   end
 
   def match(string)
-    matches = Hash.new {|h, k| h[k] = []}
-    index =  0
+    matches = Hash.new { |h, k| h[k] = [] }
+    index = 0
     string.each_char.reduce(root) do |node, char|
-      index+= 1
+      index += 1
       child = (node || root).search(char.intern)
       next unless child
+
       child.matches.each do |match|
         matches[match] << index
       end
-      
+
       child
     end
 
@@ -64,7 +66,7 @@ class AhoCorasickMatcher
     end
 
     def search(char)
-      child_map[char] || (suffix && suffix.search(char))
+      child_map[char] || suffix&.search(char)
     end
 
     def child_or_create(char)

@@ -1,9 +1,9 @@
+# frozen_string_literal: true
 
 require 'alien'
 
-class Crab < Alien 
-  
-  def looks 
+class Crab < Alien
+  def looks
     <<~HEREDOC
       --o-----o--
       ---o---o---

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'known_aliens'
 require 'singleton'
 
@@ -6,7 +8,7 @@ class KnownAliensPatterns
 
   def call(known_aliens)
     known_aliens_patterns(known_aliens)
-  end 
+  end
 
   private
 

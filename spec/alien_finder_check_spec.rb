@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 require 'alien_finder_check'
 
@@ -8,14 +10,14 @@ RSpec.describe AlienFinderCheck do
   subject(:service) { instance.call(results_from_search, width_of_the_input) }
 
   describe '#call' do
-    let(:looks_example) do 
+    let(:looks_example) do
       <<~HEREDOC
         --o-----o--
         ---o---o---
         --ooooooo--
       HEREDOC
     end
-    let(:expected_order_of_patterns) do 
+    let(:expected_order_of_patterns) do
       [
         '--o-----o--',
         '---o---o---',
@@ -43,53 +45,51 @@ RSpec.describe AlienFinderCheck do
     let(:expected_aliens) do
       [Class.new]
     end
-    
 
-    context "when there is a match" do 
-      let(:results_from_search) do 
+    context 'when there is a match' do
+      let(:results_from_search) do
         {
           '--o-----o--' => [3],
           '---o---o---' => [14],
           '--ooooooo--' => [25]
         }
-      end 
-      let(:expected_result) { [ { "Class" => [3] } ] }
+      end
+      let(:expected_result) { [{ 'Class' => [3] }] }
 
       it do
         expect(known_aliens)
           .to receive(:call)
           .and_return(expected_aliens)
-  
+
         expect(alien_check_rules)
           .to receive(:call)
-          .with(expected_aliens.first ,width_of_the_input)
+          .with(expected_aliens.first, width_of_the_input)
           .and_return(expected_check_result)
-          
+
         expect(service).to eq(expected_result)
       end
+    end
 
-    end    
-    
-    context "when there is no match" do 
-      let(:results_from_search) do 
+    context 'when there is no match' do
+      let(:results_from_search) do
         {
           '--o-----o--' => [3],
           '---o---o---' => [14],
           '--ooooooo--' => [26]
         }
-      end 
+      end
 
-      let(:expected_result) { [ { "Class" => [] } ] }
+      let(:expected_result) { [{ 'Class' => [] }] }
       it do
         expect(known_aliens)
           .to receive(:call)
           .and_return(expected_aliens)
-  
+
         expect(alien_check_rules)
           .to receive(:call)
-          .with(expected_aliens.first ,width_of_the_input)
+          .with(expected_aliens.first, width_of_the_input)
           .and_return(expected_check_result)
-          
+
         expect(service).to eq(expected_result)
       end
     end

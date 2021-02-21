@@ -1,13 +1,14 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 require 'squid'
 
 RSpec.describe Squid do
   subject(:squid) { described_class.instance }
 
-
-  describe '#looks' do 
+  describe '#looks' do
     it do
-      expect { squid.looks } .not_to raise_error
+      expect { squid.looks }.not_to raise_error
     end
 
     it do
