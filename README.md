@@ -7,9 +7,10 @@ This solutions uses the Aho–Corasick algorithm to match multiple patterns. The
 https://github.com/altmetric/aho_corasick_matcher and modified to some extent to serve the needs of this task.
 
 
-## Edge cases, considerations, possible extensions
+## Extra information
 * Radars with multiple lines of different length are not supported
-* Addition of new aliens is simple by just adding a new class 
+* Addition of new aliens is simple by just adding a new class
+* This task was done in a really short time and thus it's minimalistic aproach of pure ruby 
 
 
 ## False positives and negatives
