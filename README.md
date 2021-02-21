@@ -19,6 +19,7 @@ https://github.com/altmetric/aho_corasick_matcher and modified to some extent to
   
   Also it possible to consider other kind of partial matches without any changes to the algorithm, all that needs to be done
   is to add more patterns to the dictionary that will process the radar output. for example instead of only using 
+     ```
       ---oo---
       --oooo--
       -oooooo-
@@ -27,9 +28,11 @@ https://github.com/altmetric/aho_corasick_matcher and modified to some extent to
       --o--o--
       -o-oo-o-
       o-o--o-o
+      
+      ```
   
   we can aditionally add for example
-  
+      ```
       --------
       --oooo--
       -oooooo-
@@ -38,6 +41,7 @@ https://github.com/altmetric/aho_corasick_matcher and modified to some extent to
       --o-----
       -o-oo-o-
       o-o-----
+      ```
       
    So for example we could add another class that will take the alien and generate the permutations that we can to consider as possible valid matches
    and then pass this to the dictonary.
